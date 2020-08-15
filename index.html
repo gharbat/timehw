@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .timer{
+            background: black;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .timer div{
+            margin: 0 2rem;
+            font-size: 40px;
+            color: #0dff0d;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer">
+        <div class="h">00</div>
+        <div class="m">00</div>
+        <div class="s">00</div>
+    </div>
+    <button id="clear">clear</button>
+</body>
+<script>
+    // catch the elements from DOM
+    let h = document.getElementsByClassName("h")[0];
+    let m = document.querySelectorAll(".m")[0];
+    let s = document.getElementsByClassName("s")[0];
+    let clear = document.getElementById("clear");
+    // define the counters
+    let sCounter = 0;
+    let mCounter = 0;
+    let hCounter = 0;
+    setInterval(function () {
+        sCounter ++;
+        if (sCounter === 60){
+            sCounter =0;
+            mCounter++;
+        }
+        if (mCounter ===60){
+            mCounter = 0;
+            hCounter++;
+        }
+
+        h.innerText = hCounter;
+        m.innerText = mCounter;
+        s.innerText = sCounter;
+
+
+    }, 1000)
+
+    clear.onclick = function () {
+         sCounter = 0;
+         mCounter = 0;
+         hCounter = 0;
+    }
+</script>
+</html>
